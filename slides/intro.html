@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Data Science 101 - Chapter 1</title>
+
+    <link rel="stylesheet" href="lib/reveal.css">
+    <link rel="stylesheet" href="lib/theme/myplanet.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/zenburn.css">
+</head>
+<body>
+<div class="reveal pattern--random">
+    <div class="slides">
+        <section class="intro" id="intro">
+            <div class="logo-wrapper">
+                <div class="logo"><span class="visually-hidden">Data Science 101</span></div>
+            </div>
+        </section>
+        <section class="title" id="title">
+            <div class="grid-wrapper">
+                <div class="header">
+                    Khoa Công Nghệ Thông Tin <br/>
+                    Trường Đại học Sư Phạm TP.HCM - Việt Nam
+                </div>
+                <div class="content">
+                    <h1>Data Science 101</h1>
+                    <div class="description" style="font-size: 2em;">
+                        Lời Mở Đầu
+                    </div>
+                </div>
+                <div class="credit">
+                    <hr/>
+                    <div class="label">Presented By</div>
+                    <div class="name">Nguyễn Đặng Kim Khánh</div>
+                    <div class="role">Giảng Viên trường ĐHSP TP.HCM</div>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Giới Thiệu Làm Quen</h1>
+                <div class="description">
+                    "A simple hello could lead to a million things."
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Giáo Viên Hướng Dẫn</div>
+                <div class="main">
+                    <ul>
+                        <li>Thầy Nguyễn Đặng Kim Khánh trình bày chính</li>
+                        <ul>
+                            <li>Khoa Công Nghệ Thông Tin – Trường ĐHSP TP.HCM</li>
+                            <li>Email: <a href="mailto: khanhndk@hcmue.edu.vn">khanhndk@hcmue.edu.vn</a></li>
+                            <li>Slack: <a href="https://ds101-fall-2020.slack.com">ds101-fall-2020.slack.com</a></li>
+                            <li>Git: <a href="https://github.com/datascience-courses/ds101">github.com/datascience-courses/ds101</a></li>
+                        </ul>
+                        <li>Một số thầy cô và cựu sinh viên sẽ tham gia phụ giảng</li>
+                        <ul>
+                            <li>Thầy Nguyễn Viết Hưng</li>
+                            <li>Thầy (Anh) Lê Thanh Bính</li>
+                            <li>Các trợ giảng: Nguyễn Minh Duy, Hồ Khả Việt Huấn, Khang(!?), Tâm Lương(!?), Nguyễn Nhị Thành Tài, Vương Lê Minh Quyên</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Giới Thiệu Môn Học</h1>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Mục Tiêu của Môn Học</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li style="margin-top: 1em">Giúp nắm được những khái niệm và vấn đề cơ bản trong ngành Khoa Học Dữ Liệu</li>
+                        <li style="margin-top: 1em">Hiểu được quy trình phát triển ứng dụng thực tế trong ngành Khoa Học Dữ Liệu</li>
+                        <li style="margin-top: 1em">Biết cách giải quyết những bài toán cơ bản trong ngành Khoa Học Dữ Liệu</li>
+                        <li style="margin-top: 1em">Bước đầu có thể vận dụng kiến thức để giải quyết 1 số bài toán thực tế</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Các Môn Cần Học Trước</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Lập trình Python cơ bản</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="team color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Nội Dung Môn Học</div>
+                <div class="column" style="font-size: 1.2em;">
+                    <div>
+                        <ul>
+                            <li>Phần 1. Giới thiệu tổng quan ngành khoa học dữ liệu</li>
+                            <ul>
+                                <li>Đối tượng và nhiệm vụ nghiên cứu</li>
+                                <li>Phương pháp đánh giá khách quan</li>
+                                <li>Vòng đời phát triển ứng dụng (data science life cycle)</li>
+                                <li>Thu gom dữ liệu (data collection)</li>
+                                <li>Tiền xử lý dữ liệu (data preprocessing)</li>
+                                <li>Trực quan hóa dữ liệu (data visualization)</li>
+                            </ul>
+                            <li style="margin-top: 0.5em">Phần 2. Các dạng bài toán phổ biến</li>
+                            <ul>
+                                <li>Bài toán phân lớp dữ liệu (classification)</li>
+                                <li>Bài toán hồi quy dữ liệu (regression)</li>
+                                <li>Phương pháp đánh giá khách quan</li>
+                                <li>Bài toán nhận dạng đối tượng (object detection)</li>
+                                <li>Bài toán gom cụm dữ liệu (clustering)</li>
+                                <li>Bài toán sinh dữ liệu (generative modelling)</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Phần 3. Các kiểu dữ liệu đặc biệt và hướng giải quyết</li>
+                            <ul>
+                                <li>Dữ liệu chưa được chuẩn hóa (unnormalised data)</li>
+                                <li>Dữ liệu không cân bằng (imbalance dataset)</li>
+                                <li>Dữ liệu dạng danh nghĩa (nominal data)</li>
+                                <li>Dữ liệu dạng 2D</li>
+                                <li>Dữ liệu dạng thời gian</li>
+                                <li>Dữ liệu dạng đồ thị </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Đánh Giá Môn Học</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Thi trắc nghiệm khách quan</li>
+                        <li>Làm dự án</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Disclaimer</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Thắc Mắc và Trao Đổi</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="lib/head.min.js"></script>
+<script src="lib/reveal.js"></script>
+<script src="lib/reveal-init.js"></script>
+</body>
+</html>

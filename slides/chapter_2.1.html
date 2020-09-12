@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Data Science 101 - Chapter 2</title>
+
+    <link rel="stylesheet" href="lib/reveal.css">
+    <link rel="stylesheet" href="lib/theme/myplanet.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/zenburn.css">
+</head>
+<body>
+<div class="reveal pattern--random">
+    <div class="slides">
+        <section class="intro" id="intro">
+            <div class="logo-wrapper">
+                <div class="logo"><span class="visually-hidden">Data Science 101</span></div>
+            </div>
+        </section>
+        <section class="title" id="title">
+            <div class="grid-wrapper">
+                <div class="header">
+                    Khoa Công Nghệ Thông Tin <br/>
+                    Trường Đại học Sư Phạm TP.HCM - Việt Nam
+                </div>
+                <div class="content">
+                    <h1>Data Science 101</h1>
+                    <div class="description" style="font-size: 1.8em;">
+                        Phần 2.1. <br/>
+                        Các Bài Toán Cơ Bản với <br/>
+                        Dữ Liệu Được Gán Nhãn <br/>
+                        (Labeled Data)
+                    </div>
+                </div>
+                <div class="credit">
+                    <hr/>
+                    <div class="label">Presented By</div>
+                    <div class="name">Nguyễn Đặng Kim Khánh</div>
+                    <div class="role">Giảng Viên trường ĐHSP TP.HCM</div>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Labeled Data</div>
+                <div class="section">Data</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Data sample/instance là một đối tượng/cá thể đơn lẻ mà ta quan tâm trong bài toán cụ thể nào đó</li>
+                        <li>Hầu hết các data samples đều được số hóa thành 1 mảng số thực đa chiều</li>
+                        <li>Tập chứa tất cả các data samples ta thường đặt tên là tập $\mathcal{X}$</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Labeled Data</div>
+                <div class="section">Label</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Label là giá trị của 1 hoặc 1 vài thuộc tính được gán cho từng data instance/sample </li>
+                        <li>Trong bài toán cụ thể, chúng ta sẽ quan tâm 1 hoặc 1 vài thuộc tính nhất định và xem đó là label của bài toán</li>
+                        <li>Tập label là tập chứa tất cả các giá trị có thể có của label đó. Ta thường đặt tên là $\mathcal{Y}$</li>
+                        <li>Các dạng label:</li>
+                        <ul>
+                            <li>Continuous</li>
+                            <li>Discrete (Open/Closed Set)</li>
+                            <li>Multi-label</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Labeled Data</div>
+                <div class="section">Định Nghĩa Tổng Quát cho Các Bài Toán Cơ Bản trong Labeled Data</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Giả sử ta có tập dữ liệu $\mathcal{D}$ chứa các data instance $\textbf{x}_n\in\mathcal{X}, \forall n=1,\dots,N$</li>
+                        <li>Mỗi data instance $\textbf{x}_n$ được gắn với 1 label $y_n\in\mathcal{Y}$</li>
+                        <ul>
+                            <li>
+                                => Tồn tại ít nhất 1 cơ chế/quy luật/ánh xạ/hàm $f:\mathcal{X}\rightarrow\mathcal{Y}$ sao cho $f\left(\textbf{x}_n\right)=y_n,\forall n=1,\dots,N$
+                            </li>
+                        </ul>
+                        <li>Nhiệm vụ của chúng ta:</li>
+                        <ul>
+                            <li>Tìm hàm $f$ sao cho nó không chỉ đúng trên tập $\mathcal{D}$ mà nó cũng đúng trên các tập khác (tập test)</li>
+                            <li>Chỉ được phép sử dụng tập $\mathcal{D}$ (không được/thể dùng các tập khác) để tìm hàm $f$</li>
+                        </ul>
+                        <li>Liệu rằng có tồn tại hàm $f$ không chỉ đúng trên $\mathcal{D}$ mà nó cũng đúng trên các tập khác!?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Labeled Data</div>
+                <div class="section">Nguyên Lý Tìm Hàm $f$</div>
+                <div class="main" style="font-size: 1.4em;">
+                    <ul>
+                        <li>Xây dựng họ hàm $\mathcal{F}=\left\{f_{\textbf{W}}\left(\textbf{x}\right)\right\}$ được tham số hóa bởi $\textbf{W}$</li>
+                        <li>Chỉ cần tìm $f$ trong họ hàm $\mathcal{F}$ (tức là chỉ cần xác định $\textbf{W}$), sao cho hàm $f$ "đúng" trên $\mathcal{D}$</li>
+                        <li>Tức là: tìm $\textbf{W}$ sao cho hàm dưới đây đạt max:</li>
+                        \[\begin{aligned}
+                        \mathcal{J}\left(\textbf{W}\right)=\sum_{n=1}^{N}\left\{acc\left(\textbf{W},\textbf{x}_n,y_n\right)\right\} \\
+                        \end{aligned} \]
+                        trong đó hàm $acc\left(\textbf{W},\textbf{x}_n,y_n\right)$ bằng $1$ nếu $f_\textbf{W}\left(\textbf{x}_n\right) = y_n$ và bằng $0$ nếu ngược lại
+                        <li>Hàm $\mathcal{J}$ không được liên tục nên ta thay thế bằng 1 hàm khác:</li>
+                        \[\begin{aligned}
+                        \mathcal{L}\left(\textbf{W}\right)=\sum_{n=1}^{N}\left\{loss\left(\textbf{W},\textbf{x}_n,y_n\right)\right\} \\
+                        \end{aligned} \]
+                        trong đó hàm $loss\left(\textbf{W},\textbf{x}_n,y_n\right)$ sẽ càng lớn khi $f_\textbf{W}\left(\textbf{x}_n\right)$ càng sai so với $y_n$ và bằng
+                        $0$ nếu $f_\textbf{W}\left(\textbf{x}_n\right) = y_n$
+                        <li>Như vậy ta chỉ cần tìm $\textbf{W}$ sao cho hàm $\mathcal{L}$ đạt min</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Labeled Data</div>
+                <div class="section">Nguyên Lý Tìm Hàm $f$ (tiếp theo)</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Để tìm $\textbf{W}$ sao cho $\mathcal{L}$ đạt min, ta có thể dùng thuật toán Gradient Descent</li>
+                        <li>Nhược điểm của thuật toán Gradient Descent:</li>
+                        <ul><li>
+                            đòi hỏi phải tính gradient cho tất cả các $loss\left(\textbf{W},\textbf{x}_n,y_n\right),\forall n=1,\dots,N$
+                        cho mỗi lần cập nhật $\textbf{W}$</li>
+                        </ul>
+                        <li>Thuật toán Subgradient Descent chỉ cần tính gradient trên 1 (mini-)batch các $loss$ cho mỗi lần cập nhật $\textbf{W}$</li>
+                        <li>Các thuật toán cải tiến: Adam, Adagrad, Adadelta, RMSprop, NAG, Momentum</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="team color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Labeled Data</div>
+                <div class="section">Nguyên Lý Tìm Hàm $f$ (tiếp theo)</div>
+
+
+                <div class="column" style="font-size: 1em;">
+                    <div>
+                        <ul>
+                            <img src="media/contours_evaluation_optimizers.gif"/>
+                            SGD optimization on loss surface contours
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <img src="media/saddle_point_evaluation_optimizers.gif"/>
+                            SGD optimization on saddle point
+                        </ul>
+                    </div>
+                </div>
+                <div class="main" style="font-size: 1em;">
+                    From: Sebastian Ruder (2016). An overview of gradient descent optimisation algorithms
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Labeled Data</div>
+                <div class="section">Cách Giải Tổng Quát cho Các Bài Toán Cơ Bản trong Labeled Data</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Số hóa mỗi data instance thành 1 mảng nhiều chiều</li>
+                        <li>Xác định tập label $\mathcal{Y}$</li>
+                        <li>Xác định họ hàm $\mathcal{F}$</li>
+                        <li>Xác định hàm $loss$</li>
+                        <li>Chọn thuật toán tối ưu</li>
+                        <li>Evaluate</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Thắc Mắc và Trao Đổi</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="lib/head.min.js"></script>
+<script src="lib/reveal.js"></script>
+<script src="lib/plugin/math/math.js"></script>
+<script src="lib/reveal-init.js"></script>
+</body>
+</html>

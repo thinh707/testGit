@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Data Science 101 - Chapter 1</title>
+
+    <link rel="stylesheet" href="lib/reveal.css">
+    <link rel="stylesheet" href="lib/theme/myplanet.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/zenburn.css">
+</head>
+<body>
+<div class="reveal pattern--random">
+    <div class="slides">
+        <section class="intro" id="intro">
+            <div class="logo-wrapper">
+                <div class="logo"><span class="visually-hidden">Data Science 101</span></div>
+            </div>
+        </section>
+        <section class="title" id="title">
+            <div class="grid-wrapper">
+                <div class="header">
+                    Khoa Công Nghệ Thông Tin <br/>
+                    Trường Đại học Sư Phạm TP.HCM - Việt Nam
+                </div>
+                <div class="content">
+                    <h1>Data Science 101</h1>
+                    <div class="description" style="font-size: 1.8em;">
+                        Phần 1. <br/>
+                        Giới thiệu tổng quan <br/>
+                        ngành Khoa Học Dữ Liệu
+                    </div>
+                </div>
+                <div class="credit">
+                    <hr/>
+                    <div class="label">Presented By</div>
+                    <div class="name">Nguyễn Đặng Kim Khánh</div>
+                    <div class="role">Giảng Viên trường ĐHSP TP.HCM</div>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Đối tượng và nhiệm vụ nghiên cứu</h1>
+                <div class="description">
+
+                </div>
+            </div>
+        </section>
+        <section class="team color--light">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Đối tượng và nhiệm vụ nghiên cứu </div>
+                <div class="section">We learnt from data at the very first beginning</div>
+                <div class="column" style="padding: 2em;">
+                    <div style="margin: 1em;">
+                        <img src="media/mar_orbit.jpg" /> <br/>
+                        <div>About every two years, the Earth passes Mars as they orbit around the Sun (Credit: NASA)</div>
+                    </div>
+                    <div style="margin: 3em;">
+                        <img src="media/mendels_peas.png" /><br/>
+                        <div>The characteristics of the pea plants studied by Gregor Mendel (Credit: Wikipedia)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="team color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Đối tượng và nhiệm vụ nghiên cứu</div>
+                <div class="section">Data in modern age</div>
+                <div class="column" style="font-size: 1.8em;">
+                    <div>
+                        <ul>
+                            <li>Big Data (Velocity, Volume, Variety, Veracity)<br/><img src="media/Hilbert_InfoGrowth.png"/></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Public Data<br/><img src="media/opendata_nasa.png"/><br/>https://open.nasa.gov/open-data/</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Đối tượng và nhiệm vụ nghiên cứu</div>
+                <div class="section">Tóm lại</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Đối tượng nghiên cứu: (big) data </li>
+                        <li>Nhiệm vụ nghiên cứu:</li>
+                        <ul>
+                            <li>Probing reality</li>
+                            <li>Pattern Discovery</li>
+                            <li>Predicting future events</li>
+                            <li>Understanding people and the world</li>
+                        </ul> with minimal human intervention
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Phương pháp đánh giá khách quan</h1>
+                <div class="description">
+                    "Máy tính có khả năng nhớ 1 lượng dữ liệu khổng lồ. Do đó học vẹt là ưu thế của nó."
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Phương pháp đánh giá khách quan</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Nguyên lý cơ bản: test trên unseen data </li>
+                        <ul>
+                            <li>Như thế nào là unseen data?</li>
+                            <ul>
+                                <li>Unseen data là dữ liệu không được dùng trong lúc training!?</li>
+                                <li>Unseen data là dữ liệu không được dùng trong lúc fine-tuning</li>
+                            </ul>
+                        </ul>
+                        <li>Các kiểu đánh giá: </li>
+                        <ul>
+                            <li>Cross validation</li>
+                            <li>A/B testing</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Data Science Life Cycle</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Data Science Life Cycle</div>
+                <div class="main" style="text-align: center;">
+                    <img src="media/datascience_lifecycle.png" style="margin: 5px auto; width: 60%; "/>
+                    <div style="font-size: 0.8em; ">Image Source: https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle</div>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Data Collection</h1>
+                <div class="description">
+                    Data is the new gold
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Data Collection</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Data Privacy & Data Policy</li>
+                        <li>Automated tools for web crawling:</li>
+                        <ul>
+                            <li>Beautiful Soup</li>
+                            <li>Selenium</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Data Preprocessing</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Data Visualization</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <div class="section">Data Visualization</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Thắc Mắc và Trao Đổi</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="lib/head.min.js"></script>
+<script src="lib/reveal.js"></script>
+<script src="lib/plugin/math/math.js"></script>
+<script src="lib/reveal-init.js"></script>
+</body>
+</html>

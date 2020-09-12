@@ -1,0 +1,423 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Data Science 101 - Chapter 2</title>
+
+    <link rel="stylesheet" href="lib/reveal.css">
+    <link rel="stylesheet" href="lib/theme/myplanet.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/zenburn.css">
+</head>
+<body>
+<div class="reveal pattern--random">
+    <div class="slides">
+        <section class="intro" id="intro">
+            <div class="logo-wrapper">
+                <div class="logo"><span class="visually-hidden">Data Science 101</span></div>
+            </div>
+        </section>
+        <section class="title" id="title">
+            <div class="grid-wrapper">
+                <div class="header">
+                    Khoa Công Nghệ Thông Tin <br/>
+                    Trường Đại học Sư Phạm TP.HCM - Việt Nam
+                </div>
+                <div class="content">
+                    <h1>Data Science 101</h1>
+                    <div class="description" style="font-size: 1.8em;">
+                        Phần 2.1a. <br/>
+                        Bài Toán Phân Lớp Dữ Liệu <br/>
+                        (Classification)
+                    </div>
+                </div>
+                <div class="credit">
+                    <hr/>
+                    <div class="label">Presented By</div>
+                    <div class="name">Nguyễn Đặng Kim Khánh</div>
+                    <div class="role">Giảng Viên trường ĐHSP TP.HCM</div>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Bước 1 & 2: Xác Định tập $\mathcal{X}$ and tập $\mathcal{Y}$</h1>
+                <div class="description">
+                    "Bất kì bài toán trong Tin Học, nếu ta không hiểu rõ input và output thì sẽ không giải được!"
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Phát Biểu Bài Toán</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Ta cần xây dựng hệ thống có thể tự động phân loại dữ liệu</li>
+                        <li>Input của hệ thống là 1 dữ liệu $\textbf{x}$</li>
+                        <li>Output của hệ thống là nhãn $y$ của dữ liệu $\textbf{x}$ đó</li>
+                        <li>Trong đó nhãn $y$ thuộc tập rời rạc $\mathcal{Y}$</li>
+                        <ul>
+                            <li>Tập $\mathcal{Y}$ có 2 phần tử => binary classification</li>
+                            <li>Tập $\mathcal{Y}$ có $C>2$ phần tử => multiclass classification</li>
+                        </ul>
+                        <li>Thông thường, ta sẽ có 1 tập train đã được label sẵn</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Bước 3: Xác Định Họ Hàm $\mathcal{F}$</h1>
+                <div class="description">
+                    "Chúng ta có thể dùng bất kì họ hàm, thường việc chọn phụ thuộc nhiều vào tính chất dữ liệu"<br/>
+                </div>
+            </div>
+        </section>
+        <section class="team color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Fully-Connected Layer / Dense Layer</div>
+                <div class="column" style="font-size: 1.1em;">
+                    <div>
+                        <ul>
+                            <li>Giả sử tầng trước có $N$ node và tầng này có $M$ node</li>
+                            <li>Mỗi node ở tầng trước sẽ được nối trực tiếp tới các node ở tầng này</li>
+                            <li>Giá trị output của mỗi node được tính theo công thức sau:</li>
+                            \[\begin{aligned}
+                            o_m=\phi\left(\sum_{n=1}^N\left(w_{m,n}v_n\right)+b_m\right)
+                            \end{aligned} \]
+                            trong đó hàm $\phi\left(\cdot\right)$ gọi là hàm activation
+                            <li>Họ hàm $\mathcal{F}$ này có $N\times M+M$ tham số. Do có nhiều tham số nên cũng rất dễ bị overfit</li>
+                            <li>Có nhiều loại hàm activation:</li>
+                            <ul>
+                                <li>$softmax$: scale output về $[0, 1]$ và tổng output = 1</li>
+                                <li>$relu$: trả về 0 nếu giá trị vào là âm</li>
+                                <li>...</li>
+                            </ul>
+                            <li>Ta có thể dùng layer dạng này để thay đổi dimension của data samples</li>
+                            <li>Ta có thể chồng nhiều layer dạng này để tạo network sâu thêm</li>
+                            <li>Thường người ta dùng layer này ở các tầng cuối (tầng gần output) của network</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div style="display: block"><img src="media/fully-connected_layer.png" style="width: 100%"/></div>
+                        <div style="font-size: 0.4em; display: block">Tian, Yifan, et al. "LEP-CNN: A Lightweight Edge Device Assisted Privacy-preserving CNN Inference Solution for IoT." arXiv preprint arXiv:1901.04100 (2019).</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Fully-Connected Layer / Dense Layer (cont.)</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Ta cần import lớp Dense như sau</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+from tensorflow.keras.layers import Dense
+                        </code></pre>
+                        <li>Ta tạo dense layer như sau:</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+dense_layer = Dense(10, activation="relu")(previous_layer)
+                        </code></pre>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Xây dựng họ hàm $\mathcal{F}$ hoàn chỉnh / Build Network & Model </div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Import các thư viện cần thiết</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        from tensorflow.keras.layers import Input, Dense
+        from tensorflow.keras.models import Model
+                        </code></pre>
+                        <li>Tạo input layer và lắp ghép các layer ở giữa và cuối</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        input_layer = Input(shape=784)
+
+        hidden_layer_1 = Dense(128)(input_layer)
+        hidden_layer_2 = Dense(64)(hidden_layer_1)
+        output_layer = Dense(10, activation="softmax")(hidden_layer_2)
+                        </code></pre>
+                        <li>Tạo đối tượng Model và xác định input layer và output layer</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        model = Model(input_layer, output_layer)
+                        </code></pre>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Bước 4: Xác Định Hàm Loss</h1>
+                <div class="description">
+                    "Hàm loss như là kim chỉ nam để ta tìm hàm $f$ phù hợp trong họ hàm $\mathcal{F}$"<br/>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Hàm Loss cho Bài Toán Classification </div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Hinge Loss for binary and for multi-class</li>
+                        <li>Sparse Cross Entropy</li>
+                        \[\begin{aligned}
+                        loss= -\text{log}\;p_y
+                        \end{aligned} \]
+                        trong đó $p_y$ là xác suất predict ra class thứ $y$ của data samples đó, chính là giá trị node thứ $y$ ở output layer trong network
+                        mà ta đã định nghĩa ở slide trước.
+                        <li>Để chọn loss là sparse cross entropy ta viết:</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        from tensorflow.keras.losses import SparseCategoricalCrossentropy
+        loss = SparseCategoricalCrossentropy()
+                        </code></pre>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Bước 5: Chọn Giải Thuật Tối Ưu</h1>
+                <div class="description">
+                    "Có la bàn rồi, ta cần có 1 con tàu để tới đích. Optimizer chính là con tàu."<br/>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Chọn Optimizer</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Có nhiều optimizer cho ta lựa chọn: SGD, Adman, Adagrad, Adadelta,...</li>
+                        <li>Ta cần import thư viện tương ứng</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        from tensorflow.keras.optimizers import Adam
+                        </code></pre>
+                        <li>Khởi tạo đối tượng optimizer tương ứng</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        optimizer = Adam(learning_rate=1e-3)
+                        </code></pre>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Compile Model</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Ta cần cung cấp hàm loss và optimizer, metrics mà ta đã chọn cho quá trình compile</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        from tensorflow.keras.metrics import SparseCategoricalAccuracy
+        list_metrics = [SparseCategoricalAccuracy()]
+
+        model.compile(loss=loss, optimizer=optimizer, metrics=list_metrics)
+                        </code></pre>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Train Model</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Cung cấp data cho hàm fit để tìm hàm $f$ tối ưu</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        model.fit(x, y, batch_size=32, epochs=50)
+                        </code></pre>
+                        trong đó epochs là tham số xác định số vòng lặp cần train và batch_size là số lượng data samples được học đồng thời.
+                        <li>Làm sao biết bao nhiêu vòng lặp là đủ!?</li>
+                        <li>Làm sao để biết model sẽ predict tốt trên tập test!?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Save Model - Load Model - Make Predictions</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Sau khi train model xong, ta có thể save model xuống ổ cứng để dùng sau này</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        model.save('models/digit_classifier.hdf5')
+                        </code></pre>
+                        <li>Chúng ta có thể load lại model như sau</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        from tensorflow import keras
+        model = keras.models.load_model('models/digit_classifier.hdf5')
+                        </code></pre>
+                        <li>Chúng ta có thể call model để make prediction</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        model.predict(x_test, batch_size=32)
+                        </code></pre>
+                        trong đó batch_size là số lượng data samples mà ta muốn nó xử lý song song
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Bước 6: Evaluate</h1>
+                <div class="description">
+                    "Kiểm tra đánh giá để chắn chắn máy tính không học vẹt"<br/>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Validation Set</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Validation set là tập test độc lập được dùng trong quá trình train</li>
+                        <li>Thường người ta sẽ lấy 1 ít trong tập train làm tập validation</li>
+                        <li>Ta có thể xác định tỉ lệ lấy tập validation trong tập train như sau</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        model.fit(x, y, validation_split=0.2, batch_size=32, epochs=50)
+                        </code></pre>
+                        <li>Như vậy ta sẽ có 2 accuracy: accuracy trên tập train và accuracy trên tập validation</li>
+                        <li>Mối tương quan giữa accuracy trên tập train và tập validation/test tạo nên các khái niệm overfit và underfit</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="team color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Overfit và Underfit</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <div class="column" style="font-size: 1em;">
+                        <div>
+                            <ul>
+                                <li>Hiện tượng overfit là khi model chỉ tốt trên tập train nhưng không tốt trên các tập khác</li>
+                                <li>Hiện tượng underfit là khi model chưa tốt trên cả train và các tập khác</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img src="media/overfitting.png"/>
+                            <div style="font-size: 0.3em">https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/LinReg-validation.ipynb</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Early Stop</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Chúng ta có thể tự động stop training khi phát hiện dấu hiệu overfit trên validation set</li>
+                        <pre><code class="python hljs" data-trim data-noescape>
+        from tensorflow.keras.callbacks import EarlyStopping
+        es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=5)
+
+        model.fit(x, y, validation_split=0.2, batch_size=32, epochs=50, callbacks=[es])
+                        </code></pre>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Evaluation Metrics</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>Accuracy là tỉ lệ giữa số lượng data samples được predict đúng so với tổng số data samples trong tập test</li>
+                        <li>Confusion Matrix:</li>
+                        <table class="mytable" style="margin-top: .5em">
+                            <tr><td></td><td>Predicted Class 1</td><td>Predicted Class 2</td><td>Predicted Class 3</td><td>Total</td></tr>
+                            <tr><td>Actual Class 1</td><td>100</td><td>7</td><td>2</td><td>109</td></tr>
+                            <tr><td>Actual Class 2</td><td>0</td><td>43</td><td>5</td><td>48</td></tr>
+                            <tr><td>Actual Class 3</td><td>3</td><td>0</td><td>20</td><td>23</td></tr>
+                            <tr><td>Total</td>        <td>103</td><td>50</td><td>27</td><td>180</td></tr>
+                        </table>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Evaluation Metrics for Binary Classification</div>
+                <div class="main" style="font-size: 1.5em;">
+                    <ul>
+                        <li>Người ta thường đặt tên 2 nhãn là: nhãn positive (+) và nhãn negative (-)</li>
+                        <li>True Positive: machine predict là positive và đó là prediction đúng</li>
+                        <li>False Positive: machine predict là positive và đó là prediction sai (tức là bản chất data sample đó là negative)</li>
+                        <li>True Negative: machine predict là negative và đó là prediction đúng</li>
+                        <li>False Negative: machine predict là negative và đó là prediction sai (tức là bản chất data sample đó là positive)</li>
+                        <li>Confusion Matrix:</li>
+                        <table class="mytable" style="margin-top: .5em">
+                            <tr><td></td><td>Predicted Positive</td><td>Predicted Negative</td><td>Total</td></tr>
+                            <tr><td>Actual Positive</td><td>TP</td><td>FN</td><td>Pos</td></tr>
+                            <tr><td>Actual Negative</td><td>FP</td><td>TN</td><td>Neg</td></tr>
+                        </table>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101 / Classification</div>
+                <div class="section">Evaluation Metrics for Binary Classification (cont.)</div>
+                <div class="main" style="font-size: 1.8em;">
+                    <ul>
+                        <li>TPR = TP / Pos</li>
+                        <li>FPR = FP / Neg</li>
+                        <li>TNR = TN / Neg</li>
+                        <li>Trong imbalance data, người ta quan tâm đến các độ đo sau:</li>
+                            <ul>
+                                <li>Balance accuracy = (TPR + TNR) / 2</li>
+                                <li>Precision: trong số system predict positive (TP + FP), system đúng (TP) bao nhiêu</li>
+                                <li>Recall: trong số actual positive (Pos), system tìm ra được (TP) bao nhiêu</li>
+                                <li>F1 = 2 * Precision * Recall / (Precision + Recall)</li>
+                                <li>...</li>
+                            </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="subsection color--dark">
+            <div class="grid-wrapper">
+                <div class="header">Data Science 101</div>
+                <h1>Thắc Mắc và Trao Đổi</h1>
+                <div class="description">
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="lib/head.min.js"></script>
+<script src="lib/reveal.js"></script>
+<script src="lib/plugin/math/math.js"></script>
+<script src="lib/plugin/highlight/highlight.js"></script>
+<script src="lib/reveal-init.js"></script>
+</body>
+</html>
